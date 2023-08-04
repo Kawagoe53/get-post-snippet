@@ -15,7 +15,7 @@
   </div>
 
   <h2>お問い合わせフォーム</h1>
-  <form action="" method="">
+  <form action="post.php" method="post">
     <table>
       <tr>
         <td>タイトル：</td>
