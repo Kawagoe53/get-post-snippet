@@ -8,16 +8,14 @@ $pdo = new PDO(
 );
 
 if (isset($_GET['search_query'])) {
-    $title = '%' . $_GET['search_query'] . '%';
     $contents = '%' . $_GET['search_query'] . '%';
 } else {
-    $title = '%%';
     $contents = '%%';
 }
 
 $query = 'SELECT * FROM samples WHERE contents LIKE :contents';
 $stmt = $pdo->prepare($query);
-$stmt->bindValue(':contents', $contents, PDO::PARAM_STR);
+$stmt->bindValue(':contents', $contents, PDO::PARAM_STR); 
 $stmt->execute();
 $posts = $stmt->fetchAll();
 ?>
@@ -43,7 +41,7 @@ $posts = $stmt->fetchAll();
     <span> ← データはこちらから追加しましょう(DBとテーブルはコードを見て自身で作成してください)</span>
   </div>
 
-  <form action="top.php" method="">
+  <form action="index.php" method="get">
       <input name="search_query" type="text" value="<?php echo $_GET[
           'search_query'
       ] ?? ''; ?>" placeholder="キーワードを入力" />
